@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Electronics Devices & Circuits | ETC Department</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
@@ -135,7 +135,7 @@
         .logo-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: contain; /* 1. college logo adjust in frame proper */
             display: block;
             margin: 0 auto;
             padding: 5px; 
@@ -149,7 +149,7 @@
         .image-frame img {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: contain; /* 3. auto adjust all image src in the frame */
             display: block;
             margin: 0 auto;
         }
@@ -165,48 +165,6 @@
             color: var(--accent);
             font-weight: 600;
         }
-        
-        /* --- MOBILE SPECIFIC STYLES --- */
-        @media (max-width: 640px) {
-            /* 1. Reduced Font Sizes on Cover Page for better fit */
-            #cover-page h1 {
-                font-size: 2.5rem; /* ~40px */
-            }
-            #cover-page p {
-                font-size: 1.125rem; /* ~18px */
-            }
-            .splash-title {
-                font-size: 2rem;
-            }
-            
-            /* 2. Smaller Profile Pictures on Mobile */
-            #personnel-facility .flex-shrink-0 {
-                width: 128px;
-                height: 128px;
-                margin-bottom: 1rem;
-            }
-            
-            /* Reduced padding for better use of screen space */
-            section {
-                padding: 1rem; /* Adjust general section padding */
-            }
-
-            /* 3. Enhanced Table Responsiveness: Allow horizontal scrolling */
-            .table-responsive-container {
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-            }
-            .table-responsive-container table {
-                min-width: 600px; /* Ensure table is wide enough to need scroll */
-            }
-            
-            /* Ensure text in personnel section wraps correctly */
-            #personnel-facility .flex-col {
-                align-items: center;
-                text-align: center;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -221,14 +179,14 @@
     </section>
 
     <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-center items-center">
-            <div class="text-xl font-bold text-gray-700 text-center">
-                <span class="text-teal-600">EDC Lab Guide</span>
+        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-gray-700">
+                <span class="text-teal-600">Electronics Devices & Circuits Lab</span>
             </div>
         </div>
     </header>
 
-    <section id="cover-page" class="relative min-h-screen flex items-center justify-center p-6 bg-white overflow-hidden">
+    <section id="cover-page" class="relative min-h-screen flex items-center justify-center p-8 bg-white overflow-hidden">
         <div class="absolute inset-0 flex items-center justify-center z-0">
             <div class="grid grid-cols-4 gap-12 w-96 h-96 opacity-10">
                 <div class="circuit-light"></div>
@@ -241,41 +199,38 @@
 
         <div class="relative z-10 text-center max-w-4xl px-4 cover-content">
             <div id="college-logo" class="logo-placeholder mx-auto w-full max-w-sm h-20 sm:h-24">
-                
-
-[Image of College Logo]
-
+                <img src="college logo.PNG" alt="College Logo" />
             </div>
 
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-800 mb-4">
                 Electronics Devices & Circuit Laboratory
             </h1>
-            <p class="text-lg sm:text-2xl text-gray-600 mb-8">
+            <p class="text-xl sm:text-2xl text-gray-600 mb-8">
                 Department of Electronics & TeleCommunication Engineering
             </p>
-            <div class="bg-gray-100 border-l-4 border-teal-500 rounded-xl p-4 inline-block shadow-lg">
-                <p class="text-base font-semibold text-gray-700 mb-2">
+            <div class="bg-gray-100 border-l-4 border-teal-500 rounded-xl p-6 inline-block shadow-lg">
+                <p class="text-lg font-semibold text-gray-700 mb-2">
                     <span class="text-teal-600">Course:</span> Electronics Devices & Circuit
                 </p>
-                <p class="text-base font-semibold text-gray-700 mb-2">
+                <p class="text-lg font-semibold text-gray-700 mb-2">
                     <span class="text-teal-600">Head of Department:</span> Dr. P.B. Pokle
                 </p>
-                <p class="text-base font-semibold text-gray-700">
+                <p class="text-lg font-semibold text-gray-700">
                     <span class="text-teal-600">Lab In-Charge:</span> Mrs. J.S. Salodkar
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="toc" class="max-w-6xl mx-auto p-6 mb-16">
+    <section id="toc" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-16">
         <div class="page-number">Page 2</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Table of Contents
             </h2>
         </header>
 
-        <nav class="bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-500 animate-scroll">
+        <nav class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500 animate-scroll">
             <ul class="space-y-3 list-none p-0 text-gray-700 font-medium">
                 <li><a href="#personnel-facility" class="hover:text-teal-600 transition duration-150 block">1. Lab Personnel and Facility</a></li>
                 <li><a href="#safety" class="hover:text-teal-600 transition duration-150 block">2. Safety Rules and Emergency Procedures</a></li>
@@ -286,60 +241,64 @@
         </nav>
     </section>
 
-    ---
-
-    <section id="personnel-facility" class="max-w-6xl mx-auto p-6 mb-20">
+    <section id="personnel-facility" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
         <div class="page-number">Page 3</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Lab Personnel and Facility
             </h2>
         </header>
 
-        <div class="space-y-10">
-            <div class="bg-white rounded-xl p-4 sm:p-6 shadow-xl border-l-8 border-teal-800 animate-scroll">
-                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-8">
-                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
-                        
+        <div class="space-y-12">
+            <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
+                    <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
+                        <img src="poklesir.PNG" alt="HOD Pravin Pokle" onerror="this.onerror=null; this.src='default-person.png'"/>
                     </div>
 
-                    <div class="text-center sm:text-left">
-                        <h3 class="text-xl sm:text-2xl font-bold mb-2">Dr. P. B. Pokle (Head of Department)</h3>
-                        <p class="text-gray-700 leading-relaxed mb-3">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2">Dr. P. B. Pokle (Head of Department)</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
                             Dr.P.B. Pokle provides the strategic and academic vision for the entire Electronics & TeleCommunication Engineering Department.
                         </p>
-                        <p class="text-sm font-medium text-teal-700 border-t border-gray-200 pt-3">
-                            Location: Department Office | Consultation: [M-F 10:00 AM - 12:00 PM]
+                        <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
+                            Location: Department Office
+                        </p>
+                        <p class="text-lg font-medium text-teal-700">
+                            Consultation: [M-F 10:00 AM - 12:00 PM (by appointment)]
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-xl p-4 sm:p-6 shadow-xl border-l-8 border-teal-800 animate-scroll">
-                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-8">
-                    <div class="flex-shrink-0 w-32 h-32 sm:w-48 sm:h-48 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
-                        
+            <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
+                    <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
+                        <img src="salodkar mam.PNG" alt="Mrs. J.S. Salodkar" onerror="this.onerror=null; this.src='default-person.png'"/>
                     </div>
 
-                    <div class="text-center sm:text-left">
-                        <h3 class="text-xl sm:text-2xl font-bold mb-2">Mrs. J.S. Salodkar (Lab In-Charge)</h3>
-                        <p class="text-gray-700 leading-relaxed mb-3">
+                    <div>
+                        <h3 class="text-3xl font-bold mb-2">Mrs. J.S. Salodkar (Lab In-Charge)</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
                             Mrs. Salodkar specializes in circuit analysis and systematic debugging.
                         </p>
-                        <p class="text-sm font-medium text-teal-700 border-t border-gray-200 pt-3">
-                            Location: Primary Staff Cabin | Consultation: [M-F 2:00 PM - 4:00 PM]
+                        <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
+                            Location: Primary Staff Cabin
+                        </p>
+                        <p class="text-lg font-medium text-teal-700">
+                            Consultation: [M-F 2:00 PM - 4:00 PM (by appointment)]
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-xl font-semibold mb-3">Facility Overview</h3>
+            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+                <h3 class="text-2xl font-semibold mb-3">Facility Overview</h3>
                 <p class="text-gray-700 leading-relaxed mb-4">
-                    The lab is approximately **750 sq. ft.** and is optimized for collaborative learning across its two giant workbenches.
+                    The lab is approximately 750 sq. ft. and is optimized for collaborative learning across its two giant workbenches.
                 </p>
-                <div class="mt-4 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
-                    <table class="w-full detail-table text-xs sm:text-sm text-left text-gray-700">
+                <div class="mt-8 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+                    <table class="w-full detail-table text-sm text-left text-gray-700">
                         <thead class="text-xs uppercase">
                             <tr>
                                 <th scope="col" class="w-1/3 rounded-tl-lg">Feature</th>
@@ -350,12 +309,13 @@
                             <tr><td>Total Area</td><td>~750 sq. ft. (30 ft x 25 ft)</td></tr>
                             <tr><td>Work Stations</td><td>Two giant, centrally located workbenches.</td></tr>
                             <tr><td>Staff Facilities</td><td>2 private teaching staff cabins.</td></tr>
+                            <tr><td>Environment</td><td>Fully ventilated with ceiling fans and emergency exits.</td></tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="mt-4 w-full">
-                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-4 h-48 image-frame cover">
-                        
+                <div class="mt-6 w-full">
+                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 image-frame cover">
+                        <img src="WhatsApp Image 2025-11-19 at 20.25.55_62869ba3.jpg" alt="Digital Circuits Lab Interior" />
                     </div>
                 </div>
             </div>
@@ -363,60 +323,58 @@
         </div>
     </section>
 
-    ---
-
-    <section id="safety" class="max-w-6xl mx-auto p-6 mb-20">
+    <section id="safety" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
         <div class="page-number">Page 4</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Safety Rules and Emergency Procedures
             </h2>
-            <p class="text-sm text-teal-700 font-semibold">Strict adherence to safety guidelines is required for all personnel.</p>
+            <p class="text-lg text-teal-700 font-semibold">Strict adherence to safety guidelines is required for all personnel.</p>
         </header>
 
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-xl p-4 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-xl font-semibold mb-3">General Safety Protocol ⚠️</h3>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2 ml-2">
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
+                <h3 class="text-2xl font-semibold mb-3">General Safety Protocol ⚠️</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
                     <li>Store bags in designated areas to prevent tripping hazards.</li>
                     <li>No food or drinks are allowed on the workbenches.</li>
-                    <li>Report **faulty equipment** or any injury immediately to lab staff.</li>
+                    <li>Report faulty equipment, damaged cords, or any injury immediately to lab staff.</li>
+                    <li>Ensure your work area is clean and tidy before leaving.</li>
                 </ul>
             </div>
 
-            <div class="bg-white rounded-xl p-4 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-xl font-semibold mb-3">Electrical Safety and Emergency ⚡</h3>
-                <ul class="list-disc list-inside text-gray-700 text-sm space-y-2 ml-2">
-                    <li>Always inspect power cords for damage before use.</li>
-                    <li>Double-check **Vcc and GND polarity** before applying power.</li>
-                    <li>The **First-Aid Kit** and **CO2 extinguisher** locations must be known.</li>
-                    <li>The **Main Power Switch** is located at [Specific Location] for emergencies.</li>
+            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
+                <h3 class="text-2xl font-semibold mb-3">Electrical Safety and Emergency ⚡</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                    <li>Always inspect power cords (CRO, DMM) for damage before use.</li>
+                    <li>Double-check Vcc and GND polarity on all components before applying power.</li>
+                    <li>CO2 extinguisher (for electrical fires) is located at [Specific Location].</li>
+                    <li>The First-Aid Kit is maintained in [Specific Location].</li>
+                    <li>The Main Power Switch is located at [Specific Location] for emergencies.</li>
                 </ul>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="equipment-list" class="max-w-6xl mx-auto p-6 mb-20">
+    <section id="equipment-list" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
         <div class="page-number">Page 5</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Equipment List, Cost and Inventory
             </h2>
         </header>
 
-        <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-            <h3 class="text-xl font-semibold mb-3">Major Equipment Inventory and Financial Details</h3>
-            <p class="text-gray-700 text-sm leading-relaxed mb-4">
-                The table below details all **34** pieces of major equipment. **Scroll horizontally** on smaller screens to view all columns.
+        <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+            <h3 class="text-2xl font-semibold mb-3">Major Equipment Inventory and Financial Details</h3>
+            <p class="text-gray-700 leading-relaxed mb-6">
+                The following table details the major equipment available for core experiments, including financial data for record-keeping.
             </p>
 
-            <div class="mt-4 table-responsive-container rounded-lg border border-gray-200 shadow-md">
-                <table class="w-full experiment-table text-xs text-left text-gray-700">
+            <div class="mt-8 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+                <table class="w-full experiment-table text-sm text-left text-gray-700">
                     <thead class="text-xs uppercase">
                         <tr>
-                            <th scope="col" class="w-10 rounded-tl-lg">Sr. No</th>
+                            <th scope="col" class="w-12 rounded-tl-lg">Sr. No</th>
                             <th scope="col" class="w-1/3">Name of Equipment</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Unit Cost (₹)</th>
@@ -467,69 +425,74 @@
         </div>
     </section>
 
-    ---
-
-    <section id="usage-guide" class="max-w-6xl mx-auto p-6 mb-20">
+    <section id="usage-guide" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
         <div class="page-number">Page 6</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Equipment Inventory and Usage Guide
             </h2>
         </header>
 
-        <div class="space-y-10">
-            <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-xl font-semibold mb-3">Lab Layout Reference</h3>
-                <p class="text-gray-700 text-sm leading-relaxed mb-4">
-                    Review the layout diagram for clear navigation and location of power panels and exits.
+        <div class="space-y-12">
+            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+                <h3 class="text-2xl font-semibold mb-3">Lab Layout Reference</h3>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    For clear navigation and safety awareness, please review the layout diagram which details the Entrance, Staff Cabins, Work Tables, Equipment Storage, Power Panel, and Emergency Exit points.
                 </p>
-                <div class="mt-4 w-full">
-                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-4 h-48 image-frame">
-                        
-
-[Image of Lab Layout Diagram]
-
+                <div class="mt-6 w-full">
+                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 image-frame">
+                        <img src="WhatsApp Image 2025-11-19 at 20.25.53_b3981d20.jpg" alt="Lab Layout Diagram" />
                     </div>
                 </div>
             </div>
 
-            <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-xl font-semibold mb-3">Key Measuring Instruments</h3>
-                <p class="text-gray-700 text-sm leading-relaxed mb-4">
-                    The **Cathode Ray Oscilloscope (CRO)** is used to visualize waveforms, and the **Digital Multimeter (DMM)** for static measurements.
+            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+                <h3 class="text-2xl font-semibold mb-3">Key Measuring and Visualization Instruments</h3>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Accurate measurement is critical. You will use the CRO to visualize analog and digital waveforms and timing. The Digital Multimeter (DMM) is used for static voltage checks and continuity. The Function Generator provides stable input signals for testing amplifiers and oscillators.
                 </p>
-                
+
+                <div class="mt-6 w-full">
+                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-48 image-frame">
+                        <img src="Electronic-Lab-Equipment.jpeg" alt="CRO and Function Generator Setup" />
+                    </div>
+                </div>
+                <p class="text-gray-700 leading-relaxed mt-4">
+                    Specialized training tools, such as Experimental T.V.s, are reserved for advanced application experiments. Specific instruction on their use will be provided by staff.
+                </p>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="procedures" class="max-w-6xl mx-auto p-6 mb-20">
+    <section id="procedures" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
         <div class="page-number">Page 7</div>
-        <header class="mb-8 animate-scroll">
-            <h2 class="section-header text-2xl sm:text-4xl mb-4">
+        <header class="mb-10 animate-scroll">
+            <h2 class="section-header text-3xl sm:text-4xl mb-4">
                 Lab Procedures and Experiments
             </h2>
         </header>
 
-        <div class="space-y-10">
-            <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-xl font-semibold mb-3">In-Lab Workflow 📋</h3>
-                <ol class="list-decimal list-inside text-gray-700 text-sm space-y-2 ml-4">
-                    <li>Pre-Lab: Read the procedure and complete all **pre-lab calculations**.</li>
+        <div class="space-y-12">
+            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+                <h3 class="text-2xl font-semibold mb-3">In-Lab Workflow 📋</h3>
+                <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
+                    <li>Pre-Lab: Read the procedure and complete all pre-lab calculations.</li>
                     <li>Assembly: Build your circuit neatly on the breadboard.</li>
-                    <li>Power Check: Get **verification from staff** before applying power.</li>
+                    <li>Power Check: Get verification from staff before applying power.</li>
                     <li>Testing: Verify circuit function using the CRO and DMM.</li>
-                    <li>Post-Lab: Turn off all equipment, disassemble, and clean your station.</li>
+                    <li>Troubleshooting: Verify Power, Connections, and IC Orientation in that order if the circuit fails.</li>
+                    <li>Post-Lab: Turn off all equipment, disassemble the circuit, clean your station, and submit your report.</li>
                 </ol>
             </div>
 
-            <div class="animate-scroll bg-white p-4 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-xl font-semibold mb-3">Experiment List (10 Practicals)</h3>
-                
+            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+                <h3 class="text-2xl font-semibold mb-3">Experiment List (10 Practicals)</h3>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    The curriculum focuses on fundamental characteristics of active devices, amplifiers, and feedback circuits (oscillators).
+                </p>
+
                 <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
-                    <table class="w-full experiment-table text-xs text-left text-gray-700">
+                    <table class="w-full experiment-table text-sm text-left text-gray-700">
                         <thead class="text-xs uppercase">
                             <tr>
                                 <th scope="col" class="w-12 rounded-tl-lg">No.</th>
@@ -538,8 +501,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>1</td><td class="font-medium">JFET N-Channel</td><td>Drain and Transfer characteristics of JFET.</td></tr>
-                            <tr><td>2</td><td class="font-medium">MOSFET N-Channel</td><td>Drain and Transfer characteristics of MOSFET.</td></tr>
+                            <tr><td>1</td><td class="font-medium">JFET N-Channel</td><td>Drain and Transfer characteristics of JFET (N-channel).</td></tr>
+                            <tr><td>2</td><td class="font-medium">MOSFET N-Channel</td><td>Drain and Transfer characteristics of MOSFET (N-channel).</td></tr>
                             <tr><td>3</td><td class="font-medium">Class A power Amplifier</td><td>Study of Class A power Amplifier.</td></tr>
                             <tr><td>4</td><td class="font-medium">Class B power Amplifier</td><td>Study of Class B power Amplifier.</td></tr>
                             <tr><td>5</td><td class="font-medium">RC Phase shift Oscillator</td><td>To study of RC phase shift Oscillator (Transistor).</td></tr>
@@ -555,10 +518,8 @@
         </div>
     </section>
 
-    ---
-
-    <footer class="w-full bg-gray-200 mt-8 py-6 text-center text-sm text-gray-600">
-        &copy; <span id="current-year"></span> ECE Department | EDC Lab Guide
+    <footer class="w-full bg-gray-200 mt-12 py-8 text-center text-sm text-gray-600">
+        &copy; <span id="current-year"></span> ECE Department | Electronics Devices & Circuits Laboratory Guide
     </footer>
 
     <script>
