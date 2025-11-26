@@ -7,22 +7,20 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        /* 1. ACADEMIC THEME & MILD COLORS (Deep Teal) */
         :root {
-            --primary-bg: #f7f7f7; /* Off-White/Mild Grey Background */
-            --accent: #00796B; /* Professional Deep Teal */
-            --text-dark: #1f2937; /* Charcoal */
-            --light-accent: #4DB6AC; /* Milder Teal for highlights */
-            --circuit-on: #FFD700; /* Gold for activated circuit paths/LEDs */
-            --circuit-off: #374151; /* Dark grey for inactive paths */
+            --primary-bg: #f7f7f7;
+            --accent: #00796B;
+            --text-dark: #1f2937;
+            --light-accent: #4DB6AC;
+            --circuit-on: #FFD700;
+            --circuit-off: #374151;
         }
         body {
             background-color: var(--primary-bg);
             color: var(--text-dark);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            /* Initially hide the main content until splash is complete */
-            visibility: hidden; 
+            visibility: hidden;
         }
         body.loaded-content {
             visibility: visible;
@@ -38,8 +36,6 @@
             color: var(--light-accent);
             font-weight: 700;
         }
-
-        /* --- COVER PAGE STARTING ANIMATION CSS --- */
         @keyframes powerOn {
             0% { box-shadow: 0 0 5px var(--circuit-off); }
             50% { box-shadow: 0 0 10px 5px var(--circuit-on); opacity: 1; }
@@ -66,11 +62,9 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* --- SPLASH SCREEN SPECIFIC STYLES --- */
         #splash-screen {
-            background-color: #1f2937; /* Dark background for 'power up' effect */
-            color: #00BCD4; /* Cyan/Electric Blue for a tech feel */
+            background-color: #1f2937;
+            color: #00BCD4;
             position: fixed;
             top: 0;
             left: 0;
@@ -82,7 +76,6 @@
             z-index: 1000;
             opacity: 1;
             transition: opacity 1.5s ease-in-out;
-            animation: glitch 1.5s ease-in-out forwards;
         }
         #splash-screen.hidden {
             opacity: 0;
@@ -100,8 +93,6 @@
             0%, 100% { opacity: 1; text-shadow: 0 0 10px #00BCD4, 0 0 20px rgba(0, 188, 212, 0.5); }
             50% { opacity: 0.8; text-shadow: none; }
         }
-
-        /* --- SCROLL ANIMATION CSS (Re-added) --- */
         .animate-scroll {
             opacity: 0;
             transform: translateY(30px);
@@ -112,8 +103,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Table Styling for readability */
         .experiment-table th, .detail-table th {
             background-color: var(--accent);
             color: white;
@@ -127,7 +116,6 @@
         .experiment-table tr:nth-child(even), .detail-table tr:nth-child(even) {
             background-color: #fcfcfc;
         }
-        /* Logo Placeholder Style - Re-used for containing images with object-fit */
         .logo-placeholder {
             border: 2px dashed #80cbc4;
             background-color: #e0f2f1;
@@ -140,17 +128,14 @@
             border-radius: 0.5rem;
             overflow: hidden;
         }
-        /* Ensure images fill and adjust within the frame */
         .logo-placeholder img, .image-frame img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Use contain for logos and diagrams */
+            object-fit: contain;
         }
         .image-frame.cover img {
-            object-fit: cover; /* Use cover for background/aesthetic photos */
+            object-fit: cover;
         }
-
-        /* Page Numbering Styling */
         .page-number {
             position: absolute;
             top: 1rem;
@@ -160,7 +145,7 @@
             font-weight: 600;
         }
         section:not(#splash-screen, #cover-page) {
-            position: relative; /* Essential for page number positioning */
+            position: relative;
         }
     </style>
 </head>
@@ -184,7 +169,6 @@
     </header>
 
     <section id="cover-page" class="relative min-h-screen flex items-center justify-center p-8 bg-white overflow-hidden">
-
         <div class="absolute inset-0 flex items-center justify-center z-0">
             <div class="grid grid-cols-4 gap-12 w-96 h-96 opacity-10">
                 <div class="circuit-light"></div>
@@ -196,13 +180,12 @@
         </div>
 
         <div class="relative z-10 text-center max-w-4xl px-4 cover-content">
-
             <div id="college-logo" class="logo-placeholder mx-auto w-full max-w-sm h-20 sm:h-24">
-                <img src="college logo.PNG" alt="College Logo" class="w-full h-full object-contain">
+                <img src="college logo.PNG" alt="College Logo">
             </div>
 
             <div id="lab-logo" class="logo-placeholder mx-auto w-48 h-16 sm:h-20 mb-10">
-                <img src="images.jpeg" alt="Lab Logo" class="w-full h-full object-contain">
+                <img src="images.jpeg" alt="Lab Logo">
             </div>
 
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-800 mb-4">
@@ -215,7 +198,6 @@
                 <p class="text-lg font-semibold text-gray-700 mb-2">
                     <span class="text-teal-600">Course:</span> Electronics Devices & Circuit
                 </p>
-
                 <p class="text-lg font-semibold text-gray-700 mb-2">
                     <span class="text-teal-600">Head of Department:</span> Dr. P.B. Pokle
                 </p>
@@ -257,19 +239,19 @@
             <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll">
                 <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
                     <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
-                        <img src="poklesir.PNG" alt="HOD Pravin Pokle" class="w-full h-full object-cover">
+                        <img src="poklesir.PNG" alt="HOD Pravin Pokle">
                     </div>
 
                     <div>
                         <h3 class="text-3xl font-bold mb-2">Dr. P. B. Pokle (Head of Department)</h3>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                            Dr.P.B. Pokle provides the strategic and academic vision for the entire Electronics & TeleCommunication Engineering Department. He ensures the lab curriculum aligns with industry standards and fosters an environment of excellence.
+                            Dr.P.B. Pokle provides the strategic and academic vision for the entire Electronics & TeleCommunication Engineering Department.
                         </p>
                         <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
-                            **Location:** Department Office
+                            Location: Department Office
                         </p>
                         <p class="text-lg font-medium text-teal-700">
-                            **Consultation:** <span class="font-normal">[M-F 10:00 AM - 12:00 PM (by appointment)]</span>
+                            Consultation: [M-F 10:00 AM - 12:00 PM (by appointment)]
                         </p>
                     </div>
                 </div>
@@ -278,19 +260,19 @@
             <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll">
                 <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
                     <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden image-frame cover">
-                        <img src="salodkar mam.PNG" alt="Mrs. J.S. Salodkar" class="w-full h-full object-cover">
+                        <img src="salodkar mam.PNG" alt="Mrs. J.S. Salodkar">
                     </div>
 
                     <div>
                         <h3 class="text-3xl font-bold mb-2">Mrs. J.S. Salodkar (Lab In-Charge)</h3>
                         <p class="text-gray-700 leading-relaxed mb-4">
-                            Mrs. Salodkar specializes in circuit analysis and systematic debugging. Her office is in the **Primary Staff Cabin**. She ensures expert instruction and is available during consultation hours for project assistance.
+                            Mrs. Salodkar specializes in circuit analysis and systematic debugging.
                         </p>
                         <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
-                            **Location:** Primary Staff Cabin
+                            Location: Primary Staff Cabin
                         </p>
                         <p class="text-lg font-medium text-teal-700">
-                            **Consultation:** <span class="font-normal">[M-F 2:00 PM - 4:00 PM (by appointment)]</span>
+                            Consultation: [M-F 2:00 PM - 4:00 PM (by appointment)]
                         </p>
                     </div>
                 </div>
@@ -299,7 +281,7 @@
             <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
                 <h3 class="text-2xl font-semibold mb-3">Facility Overview</h3>
                 <p class="text-gray-700 leading-relaxed mb-4">
-                    The lab is approximately **750 sq. ft.** and is optimized for collaborative learning across its two giant workbenches.
+                    The lab is approximately 750 sq. ft. and is optimized for collaborative learning across its two giant workbenches.
                 </p>
                 <div class="mt-8 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
                     <table class="w-full detail-table text-sm text-left text-gray-700">
@@ -310,16 +292,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>**Total Area**</td><td>~750 sq. ft. (30 ft x 25 ft)</td></tr>
-                            <tr><td>**Work Stations**</td><td>Two giant, centrally located workbenches.</td></tr>
-                            <tr><td>**Staff Facilities**</td><td>2 private teaching staff cabins.</td></tr>
-                            <tr><td>**Environment**</td><td>Fully ventilated with ceiling fans and emergency exits.</td></tr>
+                            <tr><td>Total Area</td><td>~750 sq. ft. (30 ft x 25 ft)</td></tr>
+                            <tr><td>Work Stations</td><td>Two giant, centrally located workbenches.</td></tr>
+                            <tr><td>Staff Facilities</td><td>2 private teaching staff cabins.</td></tr>
+                            <tr><td>Environment</td><td>Fully ventilated with ceiling fans and emergency exits.</td></tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="mt-6 w-full">
                     <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 image-frame cover">
-                        <img src="WhatsApp Image 2025-11-19 at 20.25.55_62869ba3.jpg" alt="Digital Circuits Lab Interior" class="w-full h-full object-cover rounded-lg">
+                        <img src="WhatsApp Image 2025-11-19 at 20.25.55_62869ba3.jpg" alt="Digital Circuits Lab Interior" class="rounded-lg">
                     </div>
                 </div>
             </div>
@@ -337,25 +319,24 @@
         </header>
 
         <div class="grid md:grid-cols-2 gap-8">
-
             <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-2xl font-semibold mb-3">General Safety Protocol <span role="img" aria-label="caution">⚠️</span></h3>
+                <h3 class="text-2xl font-semibold mb-3">General Safety Protocol ⚠️</h3>
                 <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>**Storage:** Store bags in designated areas to prevent tripping hazards.</li>
-                    <li>**No Food/Drink:** Absolutely no food or drinks are allowed on the workbenches.</li>
-                    <li>**Reporting:** Report faulty equipment, damaged cords, or any injury immediately to lab staff.</li>
-                    <li>**Tidiness:** Ensure your work area is clean and tidy before leaving.</li>
+                    <li>Store bags in designated areas to prevent tripping hazards.</li>
+                    <li>No food or drinks are allowed on the workbenches.</li>
+                    <li>Report faulty equipment, damaged cords, or any injury immediately to lab staff.</li>
+                    <li>Ensure your work area is clean and tidy before leaving.</li>
                 </ul>
             </div>
 
             <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-2xl font-semibold mb-3">Electrical Safety and Emergency <span role="img" aria-label="lightning bolt">⚡</span></h3>
+                <h3 class="text-2xl font-semibold mb-3">Electrical Safety and Emergency ⚡</h3>
                 <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>**Inspect Cords:** Always inspect power cords (CRO, DMM) for damage before use.</li>
-                    <li>**Check Polarity:** Double-check Vcc and GND polarity on all components before applying power.</li>
-                    <li>**Fire Extinguisher:** CO2 extinguisher (for electrical fires) is located at **[Specific Location]**.</li>
-                    <li>**First-Aid:** The First-Aid Kit is maintained in **[Specific Location]**.</li>
-                    <li>**Main Power:** The Main Power Switch is located at **[Specific Location]** for emergencies.</li>
+                    <li>Always inspect power cords (CRO, DMM) for damage before use.</li>
+                    <li>Double-check Vcc and GND polarity on all components before applying power.</li>
+                    <li>CO2 extinguisher (for electrical fires) is located at [Specific Location].</li>
+                    <li>The First-Aid Kit is maintained in [Specific Location].</li>
+                    <li>The Main Power Switch is located at [Specific Location] for emergencies.</li>
                 </ul>
             </div>
         </div>
@@ -387,43 +368,43 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td>1</td><td class="font-medium">Diode & Zener Diode Kit SA-103</td><td>3</td><td>7140</td><td>21420</td></tr>
-<tr><td>2</td><td class="font-medium">Halfwave Rectifier Kit</td><td>3</td><td>2202</td><td>6606</td></tr>
-<tr><td>3</td><td class="font-medium">Transistor characteristic CE Kit</td><td>3</td><td>2300</td><td>6900</td></tr>
-<tr><td>4</td><td class="font-medium">Transistor characteristic CB Kit</td><td>3</td><td>2300</td><td>6900</td></tr>
-<tr><td>5</td><td class="font-medium">Transistor characteristic CC Kit</td><td>1</td><td>2300</td><td>2300</td></tr>
-<tr><td>6</td><td class="font-medium">Bread Board Trainer Kit SD-901</td><td>3</td><td>382.5</td><td>1147.5</td></tr>
-<tr><td>7</td><td class="font-medium">FET characteristic kit SD-114</td><td>1</td><td>2300</td><td>2300</td></tr>
-<tr><td>8</td><td class="font-medium">JFET Amplifier Kit SD-113</td><td>3</td><td>2300</td><td>6900</td></tr>
-<tr><td>9</td><td class="font-medium">BJT Series Regulator (5V & 9V)</td><td>1</td><td>2300</td><td>2300</td></tr>
-<tr><td>10</td><td class="font-medium">Hartley Oscillator SE-102</td><td>3</td><td>2465</td><td>7395</td></tr>
-<tr><td>11</td><td class="font-medium">Colpitt's Oscillator SE-103</td><td>1</td><td>2465</td><td>2465</td></tr>
-<tr><td>12</td><td class="font-medium">RC phase shift Oscillator SE-108</td><td>1</td><td>2465</td><td>2465</td></tr>
-<tr><td>13</td><td class="font-medium">Full Wave Rectifier SE-102</td><td>1</td><td>2300</td><td>2300</td></tr>
-<tr><td>14</td><td class="font-medium">20 MHz CRO Model-3903</td><td>3</td><td>15824</td><td>47472</td></tr>
-<tr><td>15</td><td class="font-medium">Digital Multimeter</td><td>3</td><td>395</td><td>1185</td></tr>
-<tr><td>16</td><td class="font-medium">20 MHz CRO Model-3702</td><td>1</td><td>15824</td><td>15824</td></tr>
-<tr><td>17</td><td class="font-medium">20 MHz CRO Model-3903</td><td>3</td><td>19780</td><td>59340</td></tr>
-<tr><td>18</td><td class="font-medium">DC Voltmeter 0 - 5V</td><td>5</td><td>1080</td><td>5400</td></tr>
-<tr><td>19</td><td class="font-medium">DC Voltmeter 0 - 20V</td><td>2</td><td>1080</td><td>2160</td></tr>
-<tr><td>20</td><td class="font-medium">DC Voltmeter 0 - 75V</td><td>1</td><td>1080</td><td>1080</td></tr>
-<tr><td>21</td><td class="font-medium">DC Voltmeter 0 - 300V</td><td>5</td><td>1080</td><td>5400</td></tr>
-<tr><td>22</td><td class="font-medium">DC Ammeter 0 - 50 mA</td><td>6</td><td>1080</td><td>6480</td></tr>
-<tr><td>23</td><td class="font-medium">DC Ammeter 0 - 250 mA</td><td>2</td><td>1080</td><td>2160</td></tr>
-<tr><td>24</td><td class="font-medium">DC Ammeter 0 - 500 mA</td><td>1</td><td>1080</td><td>1080</td></tr>
-<tr><td>25</td><td class="font-medium">DC Ammeter 0 - 20 $\mu$A</td><td>2</td><td>1080</td><td>2160</td></tr>
-<tr><td>26</td><td class="font-medium">DC Ammeter 0 - 25 $\mu$A</td><td>4</td><td>1080</td><td>4320</td></tr>
-<tr><td>27</td><td class="font-medium">DC Ammeter 0 - 15 mA</td><td>3</td><td>1080</td><td>3240</td></tr>
-<tr><td>28</td><td class="font-medium">DC Ammeter 0 - 50 $\mu$A</td><td>2</td><td>1080</td><td>2160</td></tr>
-<tr><td>29</td><td class="font-medium">DC Ammeter 0 - 5 $\mu$A</td><td>1</td><td>1080</td><td>1080</td></tr>
-<tr><td>30</td><td class="font-medium">AC Voltmeter 0 - 5 V</td><td>1</td><td>1050</td><td>1050</td></tr>
-<tr><td>31</td><td class="font-medium">AC Voltmeter 0 - 30V</td><td>2</td><td>1050</td><td>2100</td></tr>
-<tr><td>32</td><td class="font-medium">AC Ammeter 0 - 10 mA</td><td>2</td><td>1050</td><td>2100</td></tr>
-<tr><td>33</td><td class="font-medium">AC Ammeter 0 - 100 mA</td><td>1</td><td>1050</td><td>1050</td></tr>
-<tr><td>34</td><td class="font-medium">AC Ammeter 0 - 20 mA</td><td>1</td><td>1050</td><td>1050</td></tr>
-<tr><td colspan="4" class="text-right font-bold bg-gray-100">GRAND TOTAL (Material Cost Only)</td><td class="font-bold bg-gray-100">208497</td></tr>
-<tr><td colspan="4" class="text-right font-bold bg-gray-100">VAT and CST</td><td class="font-bold bg-gray-100">26662</td></tr>
-<tr><td colspan="4" class="text-right font-bold bg-gray-100">Total cost of Lab</td><td class="font-bold bg-gray-100">235159</td></tr>
+                        <tr><td>1</td><td class="font-medium">Diode &amp; Zener Diode Kit SA-103</td><td>3</td><td>7140</td><td>21420</td></tr>
+                        <tr><td>2</td><td class="font-medium">Halfwave Rectifier Kit</td><td>3</td><td>2202</td><td>6606</td></tr>
+                        <tr><td>3</td><td class="font-medium">Transistor characteristic CE Kit</td><td>3</td><td>2300</td><td>6900</td></tr>
+                        <tr><td>4</td><td class="font-medium">Transistor characteristic CB Kit</td><td>3</td><td>2300</td><td>6900</td></tr>
+                        <tr><td>5</td><td class="font-medium">Transistor characteristic CC Kit</td><td>1</td><td>2300</td><td>2300</td></tr>
+                        <tr><td>6</td><td class="font-medium">Bread Board Trainer Kit SD-901</td><td>3</td><td>382.5</td><td>1147.5</td></tr>
+                        <tr><td>7</td><td class="font-medium">FET characteristic kit SD-114</td><td>1</td><td>2300</td><td>2300</td></tr>
+                        <tr><td>8</td><td class="font-medium">JFET Amplifier Kit SD-113</td><td>3</td><td>2300</td><td>6900</td></tr>
+                        <tr><td>9</td><td class="font-medium">BJT Series Regulator (5V &amp; 9V)</td><td>1</td><td>2300</td><td>2300</td></tr>
+                        <tr><td>10</td><td class="font-medium">Hartley Oscillator SE-102</td><td>3</td><td>2465</td><td>7395</td></tr>
+                        <tr><td>11</td><td class="font-medium">Colpitt's Oscillator SE-103</td><td>1</td><td>2465</td><td>2465</td></tr>
+                        <tr><td>12</td><td class="font-medium">RC phase shift Oscillator SE-108</td><td>1</td><td>2465</td><td>2465</td></tr>
+                        <tr><td>13</td><td class="font-medium">Full Wave Rectifier SE-102</td><td>1</td><td>2300</td><td>2300</td></tr>
+                        <tr><td>14</td><td class="font-medium">20 MHz CRO Model-3903</td><td>3</td><td>15824</td><td>47472</td></tr>
+                        <tr><td>15</td><td class="font-medium">Digital Multimeter</td><td>3</td><td>395</td><td>1185</td></tr>
+                        <tr><td>16</td><td class="font-medium">20 MHz CRO Model-3702</td><td>1</td><td>15824</td><td>15824</td></tr>
+                        <tr><td>17</td><td class="font-medium">20 MHz CRO Model-3903</td><td>3</td><td>19780</td><td>59340</td></tr>
+                        <tr><td>18</td><td class="font-medium">DC Voltmeter 0 - 5V</td><td>5</td><td>1080</td><td>5400</td></tr>
+                        <tr><td>19</td><td class="font-medium">DC Voltmeter 0 - 20V</td><td>2</td><td>1080</td><td>2160</td></tr>
+                        <tr><td>20</td><td class="font-medium">DC Voltmeter 0 - 75V</td><td>1</td><td>1080</td><td>1080</td></tr>
+                        <tr><td>21</td><td class="font-medium">DC Voltmeter 0 - 300V</td><td>5</td><td>1080</td><td>5400</td></tr>
+                        <tr><td>22</td><td class="font-medium">DC Ammeter 0 - 50 mA</td><td>6</td><td>1080</td><td>6480</td></tr>
+                        <tr><td>23</td><td class="font-medium">DC Ammeter 0 - 250 mA</td><td>2</td><td>1080</td><td>2160</td></tr>
+                        <tr><td>24</td><td class="font-medium">DC Ammeter 0 - 500 mA</td><td>1</td><td>1080</td><td>1080</td></tr>
+                        <tr><td>25</td><td class="font-medium">DC Ammeter 0 - 20 µA</td><td>2</td><td>1080</td><td>2160</td></tr>
+                        <tr><td>26</td><td class="font-medium">DC Ammeter 0 - 25 µA</td><td>4</td><td>1080</td><td>4320</td></tr>
+                        <tr><td>27</td><td class="font-medium">DC Ammeter 0 - 15 mA</td><td>3</td><td>1080</td><td>3240</td></tr>
+                        <tr><td>28</td><td class="font-medium">DC Ammeter 0 - 50 µA</td><td>2</td><td>1080</td><td>2160</td></tr>
+                        <tr><td>29</td><td class="font-medium">DC Ammeter 0 - 5 µA</td><td>1</td><td>1080</td><td>1080</td></tr>
+                        <tr><td>30</td><td class="font-medium">AC Voltmeter 0 - 5 V</td><td>1</td><td>1050</td><td>1050</td></tr>
+                        <tr><td>31</td><td class="font-medium">AC Voltmeter 0 - 30V</td><td>2</td><td>1050</td><td>2100</td></tr>
+                        <tr><td>32</td><td class="font-medium">AC Ammeter 0 - 10 mA</td><td>2</td><td>1050</td><td>2100</td></tr>
+                        <tr><td>33</td><td class="font-medium">AC Ammeter 0 - 100 mA</td><td>1</td><td>1050</td><td>1050</td></tr>
+                        <tr><td>34</td><td class="font-medium">AC Ammeter 0 - 20 mA</td><td>1</td><td>1050</td><td>1050</td></tr>
+                        <tr><td colspan="4" class="text-right font-bold bg-gray-100">GRAND TOTAL (Material Cost Only)</td><td class="font-bold bg-gray-100">208497</td></tr>
+                        <tr><td colspan="4" class="text-right font-bold bg-gray-100">VAT and CST</td><td class="font-bold bg-gray-100">26662</td></tr>
+                        <tr><td colspan="4" class="text-right font-bold bg-gray-100">Total cost of Lab</td><td class="font-bold bg-gray-100">235159</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -439,7 +420,6 @@
         </header>
 
         <div class="space-y-12">
-
             <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
                 <h3 class="text-2xl font-semibold mb-3">Lab Layout Reference</h3>
                 <p class="text-gray-700 leading-relaxed mb-4">
@@ -447,7 +427,7 @@
                 </p>
                 <div class="mt-6 w-full">
                     <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 image-frame">
-                        <img src="WhatsApp Image 2025-11-19 at 20.25.53_b3981d20.jpg" alt="Lab Layout Diagram" class="w-full h-full object-contain rounded-lg">
+                        <img src="WhatsApp Image 2025-11-19 at 20.25.53_b3981d20.jpg" alt="Lab Layout Diagram" class="rounded-lg">
                     </div>
                 </div>
             </div>
@@ -455,12 +435,12 @@
             <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
                 <h3 class="text-2xl font-semibold mb-3">Key Measuring and Visualization Instruments</h3>
                 <p class="text-gray-700 leading-relaxed mb-6">
-                    Accurate measurement is critical. You will use the **CRO** to visualize analog and digital waveforms and timing. The **Digital Multimeter (DMM)** is used for static voltage checks and continuity. The **Function Generator** provides stable input signals for testing amplifiers and oscillators.
+                    Accurate measurement is critical. You will use the CRO to visualize analog and digital waveforms and timing. The Digital Multimeter (DMM) is used for static voltage checks and continuity. The Function Generator provides stable input signals for testing amplifiers and oscillators.
                 </p>
 
                 <div class="mt-6 w-full">
                     <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-48 image-frame">
-                        <img src="Electronic-Lab-Equipment.jpeg" alt="CRO and Function Generator Setup" class="w-full h-full object-contain rounded-lg">
+                        <img src="Electronic-Lab-Equipment.jpeg" alt="CRO and Function Generator Setup" class="rounded-lg">
                     </div>
                 </div>
                 <p class="text-gray-700 leading-relaxed mt-4">
@@ -479,16 +459,15 @@
         </header>
 
         <div class="space-y-12">
-
             <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">In-Lab Workflow <span role="img" aria-label="checklist">📋</span></h3>
+                <h3 class="text-2xl font-semibold mb-3">In-Lab Workflow 📋</h3>
                 <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
-                    <li>**Pre-Lab:** Read the procedure and complete all pre-lab calculations (Staff will check readiness).</li>
-                    <li>**Assembly:** Build your circuit neatly on the breadboard.</li>
-                    <li>**Power Check:** **MUST** get verification from staff before applying power.</li>
-                    <li>**Testing:** Verify circuit function using the CRO and DMM.</li>
-                    <li>**Troubleshooting:** Verify Power, Connections, and IC Orientation in that order if the circuit fails.</li>
-                    <li>**Post-Lab:** Turn off all equipment, disassemble the circuit, clean your station, and submit your report.</li>
+                    <li>Pre-Lab: Read the procedure and complete all pre-lab calculations.</li>
+                    <li>Assembly: Build your circuit neatly on the breadboard.</li>
+                    <li>Power Check: Get verification from staff before applying power.</li>
+                    <li>Testing: Verify circuit function using the CRO and DMM.</li>
+                    <li>Troubleshooting: Verify Power, Connections, and IC Orientation in that order if the circuit fails.</li>
+                    <li>Post-Lab: Turn off all equipment, disassemble the circuit, clean your station, and submit your report.</li>
                 </ol>
             </div>
 
@@ -510,14 +489,14 @@
                         <tbody>
                             <tr><td>1</td><td class="font-medium">JFET N-Channel</td><td>Drain and Transfer characteristics of JFET (N-channel).</td></tr>
                             <tr><td>2</td><td class="font-medium">MOSFET N-Channel</td><td>Drain and Transfer characteristics of MOSFET (N-channel).</td></tr>
-                            <tr><td>3</td><td class="font-medium">Class A power Amplifier</td><td>Study of Class A power Amplifier</td></tr>
-                            <tr><td>4</td><td class="font-medium">Class B power Amplifier</td><td>Study of Class B power Amplifier</td></tr>
-                            <tr><td>5</td><td class="font-medium">RC Phase shift Oscillator</td><td>To study of RC phase shift Oscillator (Transistor)</td></tr>
-                            <tr><td>6</td><td class="font-medium">Wein Bridge Oscillator</td><td>To study of Wein Bridge Oscillator</td></tr>
-                            <tr><td>7</td><td class="font-medium">Colpitt's Oscillator</td><td>To study of Colpitt's Oscillator</td></tr>
-                            <tr><td>8</td><td class="font-medium">Hartley Oscillator</td><td>To study of Hartley Oscillator</td></tr>
-                            <tr><td>9</td><td class="font-medium">Astable multivibrator</td><td>To study the basic characteristics of Astable multivibrator</td></tr>
-                            <tr><td>10</td><td class="font-medium">Bistable multivibrator</td><td>To study the basic characteristics of Bistable multivibrator</td></tr>
+                            <tr><td>3</td><td class="font-medium">Class A power Amplifier</td><td>Study of Class A power Amplifier.</td></tr>
+                            <tr><td>4</td><td class="font-medium">Class B power Amplifier</td><td>Study of Class B power Amplifier.</td></tr>
+                            <tr><td>5</td><td class="font-medium">RC Phase shift Oscillator</td><td>To study of RC phase shift Oscillator (Transistor).</td></tr>
+                            <tr><td>6</td><td class="font-medium">Wein Bridge Oscillator</td><td>To study of Wein Bridge Oscillator.</td></tr>
+                            <tr><td>7</td><td class="font-medium">Colpitt's Oscillator</td><td>To study of Colpitt's Oscillator.</td></tr>
+                            <tr><td>8</td><td class="font-medium">Hartley Oscillator</td><td>To study of Hartley Oscillator.</td></tr>
+                            <tr><td>9</td><td class="font-medium">Astable multivibrator</td><td>To study the basic characteristics of Astable multivibrator.</td></tr>
+                            <tr><td>10</td><td class="font-medium">Bistable multivibrator</td><td>To study the basic characteristics of Bistable multivibrator.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -532,35 +511,22 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        /**
-         * SPLASH SCREEN AND MAIN CONTENT LOADING LOGIC
-         */
         document.addEventListener("DOMContentLoaded", () => {
             const splashScreen = document.getElementById('splash-screen');
             const body = document.body;
             const coverContent = document.querySelector('.cover-content');
 
-            // 1. Show the splash screen first (it's fixed and high z-index)
-            // The body is initially hidden via CSS visibility: hidden.
-            
-            // 2. After a delay for the splash animation, hide the splash screen and reveal content
-            const splashDuration = 2500; // 2.5 seconds
-            
+            const splashDuration = 2500;
             setTimeout(() => {
-                splashScreen.classList.add('hidden'); // Fade out the splash screen
-                body.classList.add('loaded-content'); // Reveal the main content by setting visibility: visible
-                
-                // 3. Trigger the Cover Page animation after revealing content
+                splashScreen.classList.add('hidden');
+                body.classList.add('loaded-content');
+
                 if (coverContent) {
                     coverContent.classList.add('loaded');
                 }
-
-                // 4. Start observing elements for scroll animation after the initial load
                 observeAnimatedElements();
-
             }, splashDuration);
 
-            // Smooth scrolling for TOC links
             document.querySelectorAll('#toc a').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -569,27 +535,21 @@
                     });
                 });
             });
-
         });
 
-        /**
-         * SCROLL ANIMATION LOGIC (IntersectionObserver)
-         */
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // Stop observing once visible
                     observer.unobserve(entry.target);
                 }
             });
         }, {
-            // Trigger animation when 5% of the element is visible
             threshold: 0.05
         });
 
         function observeAnimatedElements() {
-             document.querySelectorAll('.animate-scroll').forEach(element => {
+            document.querySelectorAll('.animate-scroll').forEach(element => {
                 observer.observe(element);
             });
         }
