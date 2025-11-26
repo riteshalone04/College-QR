@@ -7,13 +7,14 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
     <style>
+        /* Theme Variables: Light and Bright Electronics Theme (Green/Teal & White) */
         :root {
-            --primary-bg: #f7f7f7;
-            --accent: #00796B;
-            --text-dark: #1f2937;
-            --light-accent: #4DB6AC;
-            --circuit-on: #FFD700;
-            --circuit-off: #374151;
+            --primary-bg: #f7f7f7; /* Very Light Gray/Off-White */
+            --accent: #00796B; /* Strong Teal-Green (Primary Accent) */
+            --text-dark: #1f2937; /* Dark Gray for main text */
+            --light-accent: #4DB6AC; /* Lighter Teal (Secondary Accent/Headings) */
+            --circuit-on: #FFD700; /* Gold/Yellow for circuit glow */
+            --circuit-off: #374151; /* Dark Gray for circuit off state */
         }
         body {
             background-color: var(--primary-bg);
@@ -26,6 +27,7 @@
             visibility: visible;
         }
         .section-header {
+            /* Consistent accent color border for all main section headers */
             border-left: 6px solid var(--accent);
             padding-left: 1rem;
             color: var(--accent);
@@ -33,6 +35,7 @@
             font-weight: 800;
         }
         h3 {
+            /* Consistent lighter accent color for sub-headings */
             color: var(--light-accent);
             font-weight: 700;
         }
@@ -62,6 +65,7 @@
             opacity: 1;
             transform: translateY(0);
         }
+        /* Splash Screen remains dark for contrast */
         #splash-screen {
             background-color: #1f2937;
             color: #00BCD4;
@@ -131,18 +135,26 @@
         .logo-placeholder img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Ensure logo fits properly */
+            object-fit: contain; /* 1. college logo adjust in frame proper */
             display: block;
             margin: 0 auto;
+            padding: 5px; 
+        }
+        .image-frame {
+            /* Base style for all image containers */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .image-frame img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Auto adjust all images inside frames */
+            object-fit: contain; /* 3. auto adjust all image src in the frame */
             display: block;
             margin: 0 auto;
         }
         .image-frame.cover img {
+            /* Override for personnel images to ensure full circular fit */
             object-fit: cover;
         }
         .page-number {
@@ -189,8 +201,6 @@
             <div id="college-logo" class="logo-placeholder mx-auto w-full max-w-sm h-20 sm:h-24">
                 <img src="college logo.PNG" alt="College Logo" />
             </div>
-
-            <!-- Removed lab-logo image below the college logo -->
 
             <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-800 mb-4">
                 Electronics Devices & Circuit Laboratory
