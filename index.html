@@ -1,489 +1,590 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronics Devices & Circuits | ETC Department</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <style>
-        /* 1. ACADEMIC THEME & MILD COLORS (Deep Teal) */
-        :root {
-            --primary-bg: #f7f7f7; /* Off-White/Mild Grey Background */
-            --accent: #00796B; /* Professional Deep Teal */
-            --text-dark: #1f2937; /* Charcoal */
-            --light-accent: #4DB6AC; /* Milder Teal for highlights */
-            --circuit-on: #FFD700; /* Gold for activated circuit paths/LEDs */
-            --circuit-off: #374151; /* Dark grey for inactive paths */
-        }
-        body {
-            background-color: var(--primary-bg);
-            color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden; 
-        }
-        .section-header {
-            border-left: 6px solid var(--accent);
-            padding-left: 1rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            font-weight: 800; 
-        }
-        h3 {
-            color: var(--light-accent);
-            font-weight: 700;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Electronics Devices & Circuits | ETC Department</title>
 
-        /* --- COVER PAGE STARTING ANIMATION CSS (Kept) --- */
-        @keyframes powerOn {
-            0% { box-shadow: 0 0 5px var(--circuit-off); }
-            50% { box-shadow: 0 0 10px 5px var(--circuit-on); opacity: 1; }
-            100% { box-shadow: 0 0 5px var(--circuit-off); }
-        }
-        .circuit-light {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: var(--circuit-off);
-            opacity: 0.5;
-            transition: background-color 0.5s, box-shadow 0.5s;
-        }
-        .circuit-light:nth-child(1) { animation: powerOn 2.5s infinite 0.0s; }
-        .circuit-light:nth-child(2) { animation: powerOn 2.5s infinite 0.5s; }
-        .circuit-light:nth-child(3) { animation: powerOn 2.5s infinite 1.0s; }
-        .circuit-light:nth-child(4) { animation: powerOn 2.5s infinite 1.5s; }
-        .cover-content {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.5s ease-out 1.5s, transform 1.5s ease-out 1.5s; 
-        }
-        .cover-content.loaded {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  <!-- Tailwind CDN (keeps your Tailwind usage) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-        /* --- SCROLL ANIMATION CSS (Re-added) --- */
-        .animate-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                        transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .animate-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  <style>
+    :root{
+      --primary-bg:#f7f7f7;
+      --accent:#00796B;
+      --text-dark:#1f2937;
+      --light-accent:#4DB6AC;
+      --circuit-on:#FFD700;
+      --circuit-off:#374151;
+      --slide-bg: linear-gradient(135deg,#061826 0%, #003e36 100%);
+    }
 
-        /* Table Styling for readability */
-        .experiment-table th, .detail-table th {
-            background-color: var(--accent);
-            color: white;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        .experiment-table td, .detail-table td {
-            padding: 0.75rem;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .experiment-table tr:nth-child(even), .detail-table tr:nth-child(even) {
-            background-color: #fcfcfc;
-        }
-        /* Logo Placeholder Style - Re-used for containing images */
-        .logo-placeholder {
-            border: 2px dashed #80cbc4; 
-            background-color: #e0f2f1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #00796B;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            border-radius: 0.5rem;
-            overflow: hidden; /* Important to clip the image to the frame boundaries */
-        }
-    </style>
+    html,body{
+      height:100%;
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--primary-bg);
+      color:var(--text-dark);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      scroll-behavior:smooth;
+    }
+
+    /* Header */
+    header{ background:rgba(255,255,255,0.95); backdrop-filter: blur(6px); }
+
+    /* Section header style */
+    .section-header{
+      border-left:6px solid var(--accent);
+      padding-left:1rem;
+      color:var(--accent);
+      text-transform:uppercase;
+      font-weight:800;
+    }
+
+    h3{ color:var(--light-accent); font-weight:700; }
+
+    /* Cover light animation */
+    @keyframes powerOn {
+      0% { box-shadow: 0 0 5px var(--circuit-off); }
+      50% { box-shadow: 0 0 12px 6px var(--circuit-on); opacity:1; }
+      100% { box-shadow: 0 0 5px var(--circuit-off); }
+    }
+    .circuit-light{ width:12px;height:12px;border-radius:9999px;background:var(--circuit-off);opacity:0.6; }
+    .circuit-light:nth-child(1){animation: powerOn 2.4s infinite 0s}
+    .circuit-light:nth-child(2){animation: powerOn 2.4s infinite .4s}
+    .circuit-light:nth-child(3){animation: powerOn 2.4s infinite .8s}
+    .circuit-light:nth-child(4){animation: powerOn 2.4s infinite 1.2s}
+
+    /* cover reveal */
+    .cover-content{ opacity:0; transform:translateY(20px); transition:opacity .9s ease-out, transform .9s ease-out; }
+    .cover-content.loaded{ opacity:1; transform:translateY(0); }
+
+    /* Scroll animation */
+    .animate-scroll{ opacity:0; transform:translateY(24px); transition:opacity .85s cubic-bezier(.25,.46,.45,.94), transform .85s cubic-bezier(.25,.46,.45,.94); }
+    .animate-scroll.visible{ opacity:1; transform:translateY(0); }
+
+    /* Slide-in animation for TOC overlay */
+    @keyframes slideInFromTop {
+      0% { transform: translateY(-18px); opacity:0; }
+      100% { transform: translateY(0); opacity:1; }
+    }
+    .slide-in { animation: slideInFromTop .45s ease-out both; }
+
+    /* Tables */
+    .experiment-table th, .detail-table th {
+      background:var(--accent); color:#fff; padding:.75rem; text-align:left;
+    }
+    .experiment-table td, .detail-table td { padding:.65rem; border-bottom:1px solid #e6e6e6; vertical-align:middle; }
+    .experiment-table tr:nth-child(even), .detail-table tr:nth-child(even){ background:#fcfcfc; }
+
+    /* logo placeholder */
+    .logo-placeholder{ border:2px dashed #80cbc4; background:#e0f2f1; display:flex; align-items:center; justify-content:center; color:var(--accent); font-weight:600; margin-bottom:1rem; border-radius:.5rem; overflow:hidden; }
+
+    /* image framing & auto-fit: ensures images adapt to frame size preserving aspect ratio */
+    .img-frame{ width:100%; height:100%; display:block; object-fit:cover; object-position:center; border-radius:.5rem; }
+
+    /* overlay 'blank slide' shown before navigating to a section */
+    .section-overlay{
+      position:fixed; inset:0; z-index:60; display:flex; align-items:center; justify-content:center;
+      background: rgba(6,24,38,0.82);
+      color: #fff; flex-direction:column; gap:1rem;
+      transform:scale(.99); opacity:0; pointer-events:none; transition:opacity .2s ease, transform .35s ease;
+    }
+    .section-overlay.show{ opacity:1; pointer-events:auto; transform:scale(1); }
+    .overlay-title{
+      font-weight:800; font-size:clamp(22px, 4.5vw, 46px);
+      letter-spacing:1px; text-align:center;
+      background: linear-gradient(90deg,#A7FFEB 0%, #4DB6AC 40%, #E6F4FF 100%);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-transform:uppercase;
+    }
+    .overlay-sub{ color:rgba(255,255,255,0.85); font-weight:600; opacity:.95; }
+
+    /* footer page number */
+    footer{ background:#f3f4f6; padding:1rem 0; text-align:center; font-size:.95rem; color:#4b5563; position:relative; }
+
+    /* responsive improvement */
+    @media (max-width:768px){
+      .two-col { display:block; }
+      .two-col > div{ width:100% }
+    }
+
+    /* small helpers */
+    .badge { display:inline-block; padding:.15rem .5rem; border-radius:9999px; background:rgba(0,0,0,.06); font-weight:600; font-size:.875rem; }
+  </style>
 </head>
 <body>
 
-    <header class="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm shadow-md">
-        <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-700">
-                <span class="text-teal-600">Electronics Devices & Circuits Lab</span>
-            </div>
-        </div>
+  <!-- Header -->
+  <header class="sticky top-0 z-50 w-full shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="text-2xl font-bold text-gray-700">
+        <span class="text-teal-600">Electronics Devices & Circuits Lab</span>
+      </div>
+      <nav class="hidden md:flex gap-4 items-center text-sm">
+        <a href="#cover-page" class="hover:text-teal-600">Home</a>
+        <a href="#toc" class="hover:text-teal-600">TOC</a>
+        <a href="#lab-overview" class="hover:text-teal-600">Overview</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- COVER PAGE -->
+  <section id="cover-page" class="relative min-h-screen flex items-center justify-center p-8 bg-white overflow-hidden">
+    <div class="absolute inset-0 flex items-center justify-center z-0">
+      <div class="grid grid-cols-4 gap-12 w-72 h-72 opacity-10">
+        <div class="circuit-light"></div>
+        <div class="circuit-light"></div>
+        <div class="circuit-light"></div>
+        <div class="circuit-light"></div>
+      </div>
+      <div class="absolute w-full h-full border-4 border-gray-200/30 rounded-full"></div>
+    </div>
+
+    <div class="relative z-10 text-center max-w-4xl px-4 cover-content">
+      <div id="college-logo" class="logo-placeholder mx-auto w-full max-w-sm h-20 sm:h-24">
+        <img src="college logo.PNG" alt="College Logo" class="img-frame">
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-800 mb-4">
+        Electronics Devices & Circuit Laboratory
+      </h1>
+      <p class="text-xl sm:text-2xl text-gray-600 mb-8">
+        Department of Electronics & TeleCommunication Engineering
+      </p>
+
+      <div class="bg-gray-100 border-l-4 border-teal-500 rounded-xl p-6 inline-block shadow-lg">
+        <p class="text-lg font-semibold text-gray-700 mb-2">
+          <span class="text-teal-600">Course:</span> Electronics Devices & Circuit
+        </p>
+        <p class="text-lg font-semibold text-gray-700 mb-2">
+          <span class="text-teal-600">Head of Department:</span> Dr. P.B. Pokle
+        </p>
+        <p class="text-lg font-semibold text-gray-700">
+          <span class="text-teal-600">Lab In-Charge:</span> Mrs. J.S. Salodkar 
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Table of Contents -->
+  <section id="toc" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-12">
+    <header class="mb-6 animate-scroll">
+      <h2 class="section-header text-3xl sm:text-4xl mb-4">Table of Contents</h2>
+      <p class="text-sm text-gray-600">Click a title — you'll see an intro slide, then the section.</p>
     </header>
 
-    <section id="cover-page" class="relative min-h-screen flex items-center justify-center p-8 bg-white overflow-hidden">
-        
-        <div class="absolute inset-0 flex items-center justify-center z-0">
-            <div class="grid grid-cols-4 gap-12 w-96 h-96 opacity-10">
-                <div class="circuit-light"></div>
-                <div class="circuit-light"></div>
-                <div class="circuit-light"></div>
-                <div class="circuit-light"></div>
-            </div>
-            <div class="absolute w-full h-full border-4 border-gray-200/50 rounded-full animate-spin-slow"></div>
+    <nav class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500 animate-scroll">
+      <ul id="toc-list" class="space-y-3 list-none p-0 text-gray-700 font-medium">
+        <!-- We'll populate with JS (page numbers auto) -->
+      </ul>
+    </nav>
+  </section>
+
+  <!-- 1. Lab personnel and Facility (Side-by-side HOD & Lab-in-charge) -->
+  <section id="lab-personnel-facility" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-16" data-title="Lab personnel And Facility">
+    <header class="mb-8 animate-scroll">
+      <h2 class="section-header text-3xl sm:text-4xl mb-4">Lab personnel And Facility</h2>
+      <p class="text-sm text-gray-600">Side-by-side faculty overview (HOD and Lab In-charge) and facility highlights</p>
+    </header>
+
+    <div class="two-col grid grid-cols-2 gap-8 animate-scroll">
+      <!-- HOD -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border-l-8 border-teal-800">
+        <div class="flex gap-6 items-start">
+          <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-teal-500">
+            <img src="poklesir.PNG" alt="HOD Pravin Pokle" class="img-frame">
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-1">Dr. P. B. Pokle</h3>
+            <p class="text-gray-700 mb-3">Head of Department — provides academic vision and ensures alignment to industry standards. Specializes in Advanced Communication Systems.</p>
+            <p class="text-sm text-teal-700"><strong>Location:</strong> Department Office</p>
+            <p class="text-sm text-teal-700"><strong>Email:</strong> <span class="font-normal">Pravin.Pokle@college.edu</span></p>
+            <p class="text-sm text-teal-700"><strong>Consultation:</strong> M-F 10:00 AM - 12:00 PM</p>
+          </div>
         </div>
-        
-        <div class="relative z-10 text-center max-w-4xl px-4 cover-content">
-            
-            <div id="college-logo" class="logo-placeholder mx-auto w-full max-w-sm h-20 sm:h-24">
-                <img src="college logo.PNG" alt="College Logo" class="w-full h-full object-contain">
-            </div>
+      </div>
 
-            <div id="lab-logo" class="logo-placeholder mx-auto w-48 h-16 sm:h-20 mb-10">
-                <img src="images.jpeg" alt="Lab Logo" class="w-full h-full object-contain">
-            </div>
-
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-gray-800 mb-4">
-                Electronics Devices & Circuit Laboratory
-            </h1>
-            <p class="text-xl sm:text-2xl text-gray-600 mb-8">
-                Department of Electronics & TeleCommunication Engineering
-            </p>
-            <div class="bg-gray-100 border-l-4 border-teal-500 rounded-xl p-6 inline-block shadow-lg">
-                <p class="text-lg font-semibold text-gray-700 mb-2">
-                    <span class="text-teal-600">Course:</span> Electronics Devices & Circuit
-                </p>
-                
-                <p class="text-lg font-semibold text-gray-700 mb-2">
-                    <span class="text-teal-600">Head of Department:</span> Dr. P.B. Pokle
-                </p>
-                <p class="text-lg font-semibold text-gray-700">
-                    <span class="text-teal-600">Lab In-Charge:</span> Mrs. J.S. Salodkar 
-                </p>
-            </div>
+      <!-- Lab In-Charge -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border-l-8 border-teal-800">
+        <div class="flex gap-6 items-start">
+          <div class="w-28 h-28 rounded-full overflow-hidden border-4 border-teal-500">
+            <img src="salodkar mam.PNG" alt="Mrs. J.S. Salodkar" class="img-frame">
+          </div>
+          <div>
+            <h3 class="text-2xl font-bold mb-1">Mrs. J.S. Salodkar</h3>
+            <p class="text-gray-700 mb-3">Lab In-Charge — specializes in circuit analysis and systematic debugging. Ensures correct experimental setup and safety compliance.</p>
+            <p class="text-sm text-teal-700"><strong>Location:</strong> Primary Staff Cabin</p>
+            <p class="text-sm text-teal-700"><strong>Email:</strong> <span class="font-normal">J.S.Salodkar@college.edu</span></p>
+            <p class="text-sm text-teal-700"><strong>Consultation:</strong> M-F 2:00 PM - 4:00 PM</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section id="toc" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-16">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Table of Contents
-            </h2>
-        </header>
+    <!-- Facility summary -->
+    <div class="mt-8 animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
+      <h3 class="text-2xl font-semibold mb-3">Facility Overview</h3>
+      <p class="text-gray-700 leading-relaxed">The lab is approximately <strong>750 sq. ft.</strong> with two main workbenches, staff cabins, well-ventilated environment and emergency exits. See images below for layout and interior.</p>
 
-        <nav class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500 animate-scroll">
-            <ul class="space-y-3 list-none p-0 text-gray-700 font-medium">
-                <li><a href="#lab-overview" class="hover:text-teal-600 transition duration-150 block">1. Introduction and Facility Overview</a></li>
-                <li><a href="#personnel" class="hover:text-teal-600 transition duration-150 block">2. Lab Personnel and Faculty</a></li>
-                <li><a href="#safety" class="hover:text-teal-600 transition duration-150 block">3. Safety Rules and Emergency Procedures</a></li>
-                <li><a href="#equipment" class="hover:text-teal-600 transition duration-150 block">4. Equipment Inventory and Usage Guide</a></li>
-                <li><a href="#procedures" class="hover:text-teal-600 transition duration-150 block">5. Lab Procedures and Experiments</a></li>
-            </ul>
-        </nav>
-    </section>
-
-    <section id="lab-overview" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Introduction and Facility Overview
-            </h2>
-        </header>
-
-        <div class="space-y-12">
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">Welcome and Purpose</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Welcome! This lab is designed for hands-on experience, bridging the gap between digital logic theory and practical circuit implementation. Our goal is to provide a safe, structured environment to solidify your foundational understanding of **Electronics Devices & Circuit**.
-                </p>
-            </div>
-
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">Lab Layout and Infrastructure</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    The lab is approximately **750 sq. ft.** (30 ft x 25 ft) and optimized for collaborative learning. The main area features **two giant workbenches** with ergonomic seating. The facility is well-ventilated, and two private staff cabins are strategically located for immediate guidance.
-                </p>
-                
-                <div class="mt-8 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
-                    <table class="w-full detail-table text-sm text-left text-gray-700">
-                        <thead class="text-xs uppercase">
-                            <tr>
-                                <th scope="col" class="w-1/3 rounded-tl-lg">Feature</th>
-                                <th scope="col" class="rounded-tr-lg">Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>**Total Area**</td><td>~750 sq. ft. (30 ft x 25 ft)</td></tr>
-                            <tr><td>**Work Stations**</td><td>Two giant, centrally located workbenches.</td></tr>
-                            <tr><td>**Staff Facilities**</td><td>2 private teaching staff cabins.</td></tr>
-                            <tr><td>**Environment**</td><td>Fully ventilated with ceiling fans and emergency exits.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="mt-6 w-full">
-                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 md:h-80 lg:h-96">
-                        <img src="WhatsApp Image 2025-11-19 at 20.25.55_62869ba3.jpg" alt="Digital Circuits Lab Interior" class="w-full h-full object-cover rounded-lg">
-                    </div>
-                </div>
-
-                <p class="text-gray-700 leading-relaxed mt-4">
-                    For clear navigation and safety awareness, please review the provided layout diagram which details the Entrance, Staff Cabins, Work Tables, Equipment Storage, Power Panel, and Emergency Exit points.
-                </p>
-
-                <div class="mt-6 w-full">
-                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-64 md:h-80 lg:h-96">
-                        <img src="WhatsApp Image 2025-11-19 at 20.25.53_b3981d20.jpg" alt="Lab Layout Diagram" class="w-full h-full object-contain rounded-lg">
-                    </div>
-                </div>
-            </div>
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-3 h-56 overflow-hidden">
+          <img src="WhatsApp Image 2025-11-19 at 20.25.55_62869ba3.jpg" alt="Digital Circuits Lab Interior" class="img-frame">
         </div>
-    </section>
-
-    <section id="personnel" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Lab Personnel and Faculty
-            </h2>
-        </header>
-        
-        <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll mb-10">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
-                <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden bg-gray-100">
-                    <img src="poklesir.PNG" alt="HOD Pravin Pokle" class="w-full h-full object-cover">
-                </div>
-                
-                <div>
-                    <h3 class="text-3xl font-bold mb-2">Dr. P. B. Pokle (Head of Department)</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Dr.P.B. Pokle provides the strategic and academic vision for the entire Electronics & TeleCommunication Engineering Department. He ensures the lab curriculum aligns with industry standards and fosters an environment of excellence. He specializes in **Advanced Communication Systems**.
-                    </p>
-                    <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
-                        **Location:** Department Office (Adjacent to the Lab)
-                    </p>
-                    <p class="text-lg font-medium text-teal-700">
-                        **Email:** <span class="font-normal">[Pravin.Pokle@college.edu]</span> 
-                    </p>
-                    <p class="text-lg font-medium text-teal-700">
-                        **Consultation:** <span class="font-normal">[M-F 10:00 AM - 12:00 PM (by appointment)]</span>
-                    </p>
-                </div>
-            </div>
+        <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-3 h-56 overflow-hidden">
+          <img src="WhatsApp Image 2025-11-19 at 20.25.53_b3981d20.jpg" alt="Lab Layout Diagram" class="img-frame">
         </div>
-        
-        <div class="bg-white rounded-2xl p-6 sm:p-10 shadow-xl border-l-8 border-teal-800 animate-scroll">
-            <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-6 sm:space-y-0 sm:space-x-8">
-                <div class="flex-shrink-0 w-48 h-48 sm:w-56 sm:h-56 rounded-full border-4 border-teal-500 overflow-hidden bg-gray-100">
-                    <img src="salodkar mam.PNG" alt="Mrs. J.S. Salodkar" class="w-full h-full object-cover">
-                </div>
-                
-                <div>
-                    <h3 class="text-3xl font-bold mb-2">Mrs. J.S. Salodkar (Lab In-Charge)</h3>
-                    <p class="text-gray-700 leading-relaxed mb-4">
-                        Mrs. Salodkar holds a Ph.D. in Electronics Devices & Circuit and specializes in circuit analysis and systematic debugging. Her office is in the **Primary Staff Cabin**. She ensures expert instruction and is available during consultation hours for advanced academic and project assistance.
-                    </p>
-                    <p class="text-lg font-medium text-teal-700 border-t border-gray-200 pt-3">
-                        **Location:** Primary Staff Cabin
-                    </p>
-                    <p class="text-lg font-medium text-teal-700">
-                        **Email:** <span class="font-normal">[J.S.Salodkar@college.edu]</span> 
-                    </p>
-                    <p class="text-lg font-medium text-teal-700">
-                        **Consultation:** <span class="font-normal">[M-F 2:00 PM - 4:00 PM (by appointment)]</span>
-                    </p>
-                </div>
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. List of Lab Equipment and per unit cost and total cost (replaces equipment inventory) -->
+  <section id="equipment-costs" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-16" data-title="List of Lab Equipment and per unit cost and total cost">
+    <header class="mb-6 animate-scroll">
+      <h2 class="section-header text-3xl sm:text-4xl mb-4">List of Lab Equipment & Costs</h2>
+      <p class="text-sm text-gray-600">Per-unit cost, quantity and total cost automatically calculated. Edit the values in the table to update totals.</p>
+    </header>
+
+    <div class="bg-white rounded-xl p-6 shadow-lg border-l-4 border-teal-300 animate-scroll">
+      <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+        <table id="equipment-table" class="w-full detail-table text-sm text-left text-gray-700">
+          <thead class="text-xs uppercase">
+            <tr>
+              <th class="w-12 rounded-tl-lg">Sr. No.</th>
+              <th>Equipment</th>
+              <th class="w-28">Quantity</th>
+              <th class="w-40">Unit Cost (₹)</th>
+              <th class="w-40 rounded-tr-lg">Total Cost (₹)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sample rows - these can be edited by you -->
+            <tr>
+              <td>1</td>
+              <td class="font-medium">DC Power Supply</td>
+              <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="5"></td>
+              <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="4500"></td>
+              <td class="row-total font-semibold">22500</td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td class="font-medium">Breadboard</td>
+              <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="30"></td>
+              <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="120"></td>
+              <td class="row-total font-semibold">3600</td>
+            </tr>
+
+            <tr>
+              <td>3</td>
+              <td class="font-medium">Digital Multimeter (DMM)</td>
+              <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="8"></td>
+              <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="2500"></td>
+              <td class="row-total font-semibold">20000</td>
+            </tr>
+
+            <tr>
+              <td>4</td>
+              <td class="font-medium">CRO / Oscilloscope</td>
+              <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="6"></td>
+              <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="35000"></td>
+              <td class="row-total font-semibold">210000</td>
+            </tr>
+
+            <tr>
+              <td>5</td>
+              <td class="font-medium">Function Generator</td>
+              <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="4"></td>
+              <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="12000"></td>
+              <td class="row-total font-semibold">48000</td>
+            </tr>
+
+            <!-- Add more rows as needed -->
+          </tbody>
+
+          <tfoot>
+            <tr>
+              <td colspan="4" class="text-right pr-4 font-semibold">Grand Total (₹):</td>
+              <td id="grand-total" class="font-bold text-lg">0</td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="mt-4 flex gap-3 items-center">
+          <button id="add-row" class="px-4 py-2 bg-teal-600 text-white rounded hover:bg-teal-700">Add row</button>
+          <button id="recalc" class="px-4 py-2 border rounded hover:bg-gray-50">Recalculate</button>
+          <span class="text-sm text-gray-600 ml-auto">Tip: change <em>Quantity</em> or <em>Unit Cost</em> to update totals.</span>
         </div>
-        
-        <div class="mt-10 animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-            <h3 class="text-2xl font-semibold mb-3">Supporting Personnel</h3>
-            <p class="text-gray-700 leading-relaxed">
-                The Lab Technician and Teaching Assistants (TAs) provide crucial technical and educational support. They are your first line of support for equipment setup, maintenance, and immediate procedural troubleshooting during lab sessions.
-            </p>
-            <div class="bg-gray-100 border-2 border-dashed border-gray-400 rounded-lg p-6 h-40 sm:h-48 md:h-56 mt-4">
-                <img src="WhatsApp Image 2025-11-19 at 20.25.55_e21532d3.jpg" alt="Lab Technician and TAs" class="w-full h-full object-cover rounded-lg">
-            </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Equipment Inventory and Usage Guide (same info + infrastructure image src) -->
+  <section id="equipment-inventory" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-16" data-title="Equipment Inventory and usage guide">
+    <header class="mb-6 animate-scroll">
+      <h2 class="section-header text-3xl sm:text-4xl mb-4">Equipment Inventory & Usage Guide</h2>
+      <p class="text-sm text-gray-600">Information about equipment usage. Below: example images for lab infrastructure (auto-fit into frames).</p>
+    </header>
+
+    <div class="space-y-8">
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300 animate-scroll">
+        <h3 class="text-2xl font-semibold mb-3">Core Workstation Setup</h3>
+        <p class="text-gray-700 leading-relaxed mb-6">Each station has a DC power supply, breadboard, DMM and scope. Use the function generator for signal input.</p>
+
+        <div class="mt-6 w-full">
+          <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-3 h-64 overflow-hidden">
+            <!-- infrastructure image (auto-fit) -->
+            <img src="Electronic-Lab-Equipment.jpeg" alt="CRO and Function Generator Setup" class="img-frame">
+          </div>
         </div>
-    </section>
+      </div>
 
+      <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300 animate-scroll">
+        <h3 class="text-2xl font-semibold mb-3">Key Measuring Instruments</h3>
+        <p class="text-gray-700 leading-relaxed">Use the CRO for waveform observation, DMM for verification, and function generator for stimulus.</p>
 
-    <section id="safety" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Safety Rules and Emergency Procedures
-            </h2>
-            <p class="text-lg text-teal-700 font-semibold">Strict adherence to safety guidelines is required for all personnel.</p>
-        </header>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            
-            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-2xl font-semibold mb-3">General Safety Protocol </h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>**Storage:** Store bags in designated areas to prevent tripping hazards.</li>
-                    <li>**No Food/Drink:** Absolutely no food or drinks are allowed on the workbenches.</li>
-                    <li>**Reporting:** Report faulty equipment, damaged cords, or any injury immediately to lab staff.</li>
-                    <li>**Tidiness:** Ensure your work area is clean and tidy before leaving.</li>
-                </ul>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 shadow-lg border-t-4 border-teal-500 animate-scroll">
-                <h3 class="text-2xl font-semibold mb-3">Electrical Safety and Emergency</h3>
-                <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
-                    <li>**Inspect Cords:** Always inspect power cords (CRO, DMM) for damage before use.</li>
-                    <li>**Check Polarity:** Double-check Vcc and GND polarity on all components before applying power.</li>
-                    <li>**Fire Extinguisher:** CO2 extinguisher (for electrical fires) is located at [Location].</li>
-                    <li>**First-Aid:** The First-Aid Kit is maintained in [Location].</li>
-                    <li>**Main Power:** The Main Power Switch is located at [Location] for emergencies.</li>
-                </ul>
-            </div>
+        <div class="mt-6 grid md:grid-cols-2 gap-4">
+          <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-3 h-44 overflow-hidden">
+            <img src="Equipment-1.jpg" alt="Equipment 1" class="img-frame">
+          </div>
+          <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-3 h-44 overflow-hidden">
+            <img src="Equipment-2.jpg" alt="Equipment 2" class="img-frame">
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
+  <!-- 4. Lab Procedure and Experiments -->
+  <section id="lab-procedures" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20" data-title="Lab Procedure and Experiment">
+    <header class="mb-6 animate-scroll">
+      <h2 class="section-header text-3xl sm:text-4xl mb-4">Lab Procedure & Experiments</h2>
+      <p class="text-sm text-gray-600">Pre-lab, assembly, power-check, testing, troubleshooting and post-lab procedures.</p>
+    </header>
 
-    <section id="equipment" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Equipment Inventory and Usage Guide
-            </h2>
-        </header>
+    <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300 animate-scroll">
+      <h3 class="text-2xl font-semibold mb-3">In-Lab Workflow</h3>
+      <ol class="list-decimal list-inside text-gray-700 space-y-2 ml-4">
+        <li><strong>Pre-Lab:</strong> Read procedure and complete calculations.</li>
+        <li><strong>Assembly:</strong> Build circuit on breadboard.</li>
+        <li><strong>Power Check:</strong> MUST get staff verification before applying power.</li>
+        <li><strong>Testing:</strong> Use CRO and DMM to verify operation.</li>
+        <li><strong>Troubleshooting:</strong> Power, connections, IC orientation (in that order).</li>
+        <li><strong>Post-Lab:</strong> Turn off equipment, disassemble, clean, submit report.</li>
+      </ol>
+    </div>
 
-        <div class="space-y-12">
-            
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">Core Workstation Setup</h3>
-                <p class="text-gray-700 leading-relaxed mb-6">
-                    Each station has the fundamental tools necessary for assembling, powering, and testing transistor-based and IC circuits.
-                </p>
+    <div class="mt-8 bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300 animate-scroll">
+      <h3 class="text-2xl font-semibold mb-3">Experiment List (10 Practicals)</h3>
+      <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
+        <table class="w-full experiment-table text-sm text-left text-gray-700">
+          <thead class="text-xs uppercase">
+            <tr>
+              <th class="w-12 rounded-tl-lg">No.</th>
+              <th class="w-1/3">Experiment Title</th>
+              <th class="rounded-tr-lg">Objective</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td class="font-medium">JFET N-Channel</td><td>Drain and Transfer characteristics of JFET (N-channel).</td></tr>
+            <tr><td>2</td><td class="font-medium">MOSFET N-Channel</td><td>Drain and Transfer characteristics of MOSFET (N-channel).</td></tr>
+            <tr><td>3</td><td class="font-medium">Class A power Amplifier</td><td>Study of Class A power Amplifier</td></tr>
+            <tr><td>4</td><td class="font-medium">Class B power Amplifier</td><td>Study of Class B power Amplifier</td></tr>
+            <tr><td>5</td><td class="font-medium">RC Phase shift Oscillator</td><td>To study RC phase shift oscillator (Transistor)</td></tr>
+            <tr><td>6</td><td class="font-medium">Wein Bridge Oscillator</td><td>To study Wein Bridge Oscillator</td></tr>
+            <tr><td>7</td><td class="font-medium">Colpitt's Oscillator</td><td>To study Colpitt's Oscillator</td></tr>
+            <tr><td>8</td><td class="font-medium">Hartley Oscillator</td><td>To study Hartley Oscillator</td></tr>
+            <tr><td>9</td><td class="font-medium">Astable multivibrator</td><td>To study characteristics of Astable multivibrator</td></tr>
+            <tr><td>10</td><td class="font-medium">Bistable multivibrator</td><td>To study characteristics of Bistable multivibrator</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-                <div class="mt-8 overflow-x-auto rounded-lg border border-gray-200 shadow-md">
-                    <table class="w-full detail-table text-sm text-left text-gray-700">
-                        <thead class="text-xs uppercase">
-                            <tr>
-                                <th scope="col" class="w-1/3 rounded-tl-lg">Equipment Type</th>
-                                <th scope="col">Purpose / Standard</th>
-                                <th scope="col" class="rounded-tr-lg">Quantity (Typical)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>**DC Power Supply**</td><td>Provides stable DC voltage (e.g., +5V for TTL or variable for BJT/FET bias).</td><td>1 per station</td></tr>
-                            <tr><td>**Breadboard**</td><td>Non-soldering platform for temporary circuit assembly.</td><td>1 per station</td></tr>
-                            <tr><td>**Digital Multimeter (DMM)**</td><td>Measures voltage (DC/AC), current, and checks continuity/resistance.</td><td>1 per station</td></tr>
-                            <tr><td>**CRO/Oscilloscope**</td><td>Visualizes and measures time-varying signals (e.g., sine, square wave).</td><td>1 per station</td></tr>
-                            <tr><td>**Function Generator**</td><td>Generates various input signals (sine, square, triangle waves).</td><td>Shared/Dedicated</td></tr>
-                            <tr><td>**Components Kit**</td><td>Includes Diodes, BJTs, FETs, Op-Amps, Resistors, Capacitors, and ICs.</td><td>Per experiment</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+  <!-- Footer -->
+  <footer>
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+      <div>&copy; <span id="current-year"></span> ECE Department | Electronics Devices & Circuits Laboratory Guide</div>
+      <div>Page <span id="page-number">1</span></div>
+    </div>
+  </footer>
 
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">Key Measuring and Visualization Instruments</h3>
-                <p class="text-gray-700 leading-relaxed">
-                    Accurate measurement is critical. You will use the **CRO** to visualize analog and digital waveforms and timing. The **Digital Multimeter (DMM)** is used for static voltage checks and continuity. The **Function Generator** provides stable input signals (AC/DC) for testing amplifiers and oscillators.
-                </p>
-                
-                <div class="mt-6 w-full">
-                    <div class="bg-gray-100 border-2 border-dashed border-teal-500/50 rounded-lg p-6 h-48 md:h-64 lg:h-72">
-                        <img src="Electronic-Lab-Equipment.jpeg" alt="CRO and Function Generator Setup" class="w-full h-full object-contain rounded-lg">
-                    </div>
-                </div>
-                
-                <p class="text-gray-700 leading-relaxed mt-4">
-                    Specialized training tools, such as Experimental T.V.s, are reserved for advanced application experiments. Specific instruction on their use will be provided by staff.
-                </p>
-            </div>
-        </div>
-    </section>
+  <!-- Section overlay (blank slide) that shows before jump -->
+  <div id="section-overlay" class="section-overlay" aria-hidden="true">
+    <div class="text-center">
+      <div class="overlay-title">Electronics And Telecommunication</div>
+      <div class="overlay-sub">Electronics Devices & Circuits — Department Theme</div>
+    </div>
+  </div>
 
-    <section id="procedures" class="max-w-6xl mx-auto p-6 md:p-12 lg:p-16 mb-20">
-        <header class="mb-10 animate-scroll">
-            <h2 class="section-header text-3xl sm:text-4xl mb-4">
-                Lab Procedures and Experiments
-            </h2>
-        </header>
+  <!-- JavaScript: interactions, TOC generation, equipment totals, overlay navigation, animations -->
+  <script>
+    // Set current year
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        <div class="space-y-12">
-            
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">In-Lab Workflow</h3>
-                <ol class="list-decimal list-inside text-gray-700 space-y-3 ml-4">
-                    <li>**Pre-Lab:** Read the procedure and complete all pre-lab calculations (Staff will check readiness).</li>
-                    <li>**Assembly:** Build your circuit neatly on the breadboard.</li>
-                    <li>**Power Check:** **MUST** get verification from staff before applying power.</li>
-                    <li>**Testing:** Verify circuit function using the CRO and DMM.</li>
-                    <li>**Troubleshooting:** Verify Power, Connections, and IC Orientation in that order if the circuit fails.</li>
-                    <li>**Post-Lab:** Turn off all equipment, disassemble the circuit, clean your station, and submit your report.</li>
-                </ol>
-            </div>
+    // Sections to include in TOC in order (id and display title)
+    const sections = [
+      { id: 'lab-personnel-facility', title: 'Lab personnel And Facility' },
+      { id: 'equipment-costs', title: 'List of Lab Equipment and per unit cost and total cost' },
+      { id: 'equipment-inventory', title: 'Equipment Inventory and usage guide' },
+      { id: 'lab-procedures', title: 'Lab Procedure and Experiment' }
+    ];
 
-            <div class="animate-scroll bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-300">
-                <h3 class="text-2xl font-semibold mb-3">Experiment List (10 Practicals)</h3>
-                <p class="text-gray-700 leading-relaxed mb-6">
-                    The curriculum focuses on fundamental characteristics of active devices, amplifiers, and feedback circuits (oscillators).
-                </p>
-                
-                <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md">
-                    <table class="w-full experiment-table text-sm text-left text-gray-700">
-                        <thead class="text-xs uppercase">
-                            <tr>
-                                <th scope="col" class="w-12 rounded-tl-lg">No.</th>
-                                <th scope="col" class="w-1/3">Experiment Title</th>
-                                <th scope="col" class="rounded-tr-lg">Objective</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>1</td><td class="font-medium">JFET N-Channel</td><td>Drain and Transfer characteristics of JFET (N-channel).</td></tr>
-                            <tr><td>2</td><td class="font-medium">MOSFET N-Channel</td><td>Drain and Transfer characteristics of MOSFET (N-channel).</td></tr>
-                            <tr><td>3</td><td class="font-medium">Class A power Amplifier</td><td>Study of Class A power Amplifier</td></tr>
-                            <tr><td>4</td><td class="font-medium">Class B power Amplifier</td><td>Study of Class B power Amplifier</td></tr>
-                            <tr><td>5</td><td class="font-medium">RC Phase shift Oscillator</td><td>To study of RC phase shift Oscillator (Transistor)</td></tr>
-                            <tr><td>6</td><td class="font-medium">Wein Bridge Oscillator</td><td>To study of Wein Bridge Oscillator</td></tr>
-                            <tr><td>7</td><td class="font-medium">Colpitt's Oscillator</td><td>To study of Colpitt's Oscillator</td></tr>
-                            <tr><td>8</td><td class="font-medium">Hartley Oscillator</td><td>To study of Hartley Oscillator</td></tr>
-                            <tr><td>9</td><td class="font-medium">Astable multivibrator</td><td>To study the basic characteristics of Astable multivibrator</td></tr>
-                            <tr><td>10</td><td class="font-medium">Bistable multivibrator</td><td>To study the basic characteristics of Bistable multivibrator</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </section>
+    // Build TOC with page numbers (page numbers based on index)
+    const tocList = document.getElementById('toc-list');
+    sections.forEach((s, idx) => {
+      const li = document.createElement('li');
+      li.className = 'flex items-center justify-between';
+      li.innerHTML = `
+        <a href="#${s.id}" data-target="${s.id}" class="toc-link block py-2 pr-4 hover:text-teal-600">${idx+1}. ${s.title}</a>
+        <span class="badge ml-2">Page ${idx+2}</span>
+      `;
+      tocList.appendChild(li);
+    });
 
-    <footer class="w-full bg-gray-200 mt-12 py-8 text-center text-sm text-gray-600">
-        &copy; <span id="current-year"></span> ECE Department | Electronics Devices & Circuits Laboratory Guide
-    </footer>
+    // Observe scroll to reveal animate-scroll elements
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
 
-    <script>
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+    document.querySelectorAll('.animate-scroll').forEach(el => observer.observe(el));
 
-        /**
-         * COVER PAGE ANIMATION TRIGGER (For the initial fade-in)
-         */
-        document.addEventListener("DOMContentLoaded", () => {
-            const coverContent = document.querySelector('.cover-content');
-            if (coverContent) {
-                // Wait briefly before revealing the content
-                setTimeout(() => {
-                    coverContent.classList.add('loaded');
-                }, 100); 
-            }
-        });
+    // SECTION OVERLAY (blank slide) logic
+    const overlay = document.getElementById('section-overlay');
+    const tocLinks = document.querySelectorAll('.toc-link');
 
-        /**
-         * SCROLL ANIMATION LOGIC (IntersectionObserver - Re-added)
-         * Triggers a smooth fade-in effect when elements enter the viewport.
-         */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    // Stop observing once visible
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            // Trigger animation when 5% of the element is visible
-            threshold: 0.05 
-        });
+    function showOverlayThenNavigate(targetId) {
+      overlay.classList.add('show');
+      // add small subtle animation class
+      overlay.classList.add('slide-in');
 
-        document.addEventListener("DOMContentLoaded", () => {
-            // Target all elements we want to animate on scroll (excluding the cover page content, which uses the 'loaded' class)
-            document.querySelectorAll('.animate-scroll').forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
+      // hold overlay briefly then scroll to element
+      const waitMs = 650; // brief, snappy
+      setTimeout(() => {
+        overlay.classList.remove('show', 'slide-in');
+        // scroll to target smoothly
+        const target = document.getElementById(targetId);
+        if (target) {
+          // adjust to consider header height (sticky)
+          const headerOffset = document.querySelector('header').offsetHeight + 12;
+          const targetPos = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        }
+      }, waitMs);
+    }
+
+    tocLinks.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = a.getAttribute('data-target');
+        showOverlayThenNavigate(id);
+      });
+    });
+
+    // Page number tracking: map sections to page numbers (we used page numbers in TOC as idx+2 so footer starts with 1 for cover)
+    const pageNumberEl = document.getElementById('page-number');
+    const allSectionsEls = sections.map(s => document.getElementById(s.id));
+    // start page = 1 (cover), then sections map to pages 2..n
+    function updatePageIndicator() {
+      const scrollY = window.scrollY + (window.innerHeight * 0.25);
+      let current = 1;
+      for (let i=0;i<allSectionsEls.length;i++){
+        const el = allSectionsEls[i];
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (scrollY >= top) current = i+2; // page mapping
+      }
+      pageNumberEl.textContent = current;
+    }
+    window.addEventListener('scroll', updatePageIndicator);
+    window.addEventListener('resize', updatePageIndicator);
+    updatePageIndicator();
+
+    // Equipment table calculations
+    function recalcEquipmentTotals() {
+      const table = document.getElementById('equipment-table');
+      const tbody = table.querySelector('tbody');
+      let grand = 0;
+      tbody.querySelectorAll('tr').forEach((tr, idx) => {
+        const qtyInput = tr.querySelector('.qty-input');
+        const unitInput = tr.querySelector('.unit-input');
+        const rowTotalCell = tr.querySelector('.row-total');
+
+        const qty = qtyInput ? parseFloat(qtyInput.value || 0) : 0;
+        const unit = unitInput ? parseFloat(unitInput.value || 0) : 0;
+        const rowTotal = Math.round(qty * unit);
+        if (rowTotalCell) rowTotalCell.textContent = rowTotal.toLocaleString('en-IN');
+        grand += rowTotal;
+        // update sr.no if new rows added
+        const sr = tr.querySelector('td:first-child');
+        if (sr) sr.textContent = idx+1;
+      });
+
+      document.getElementById('grand-total').textContent = grand.toLocaleString('en-IN');
+    }
+
+    // attach events to recalc on input change
+    document.addEventListener('input', (e) => {
+      if (e.target.matches('.qty-input') || e.target.matches('.unit-input')) {
+        recalcEquipmentTotals();
+      }
+    });
+
+    // Add row functionality
+    document.getElementById('add-row').addEventListener('click', () => {
+      const tbody = document.querySelector('#equipment-table tbody');
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>0</td>
+        <td contenteditable="true" class="font-medium">New Equipment</td>
+        <td><input type="number" min="0" class="qty-input w-20 rounded border px-2 py-1" value="1"></td>
+        <td><input type="number" min="0" class="unit-input w-32 rounded border px-2 py-1" value="0"></td>
+        <td class="row-total font-semibold">0</td>
+      `;
+      tbody.appendChild(newRow);
+      recalcEquipmentTotals();
+    });
+
+    document.getElementById('recalc').addEventListener('click', recalcEquipmentTotals);
+
+    // initial calculation
+    recalcEquipmentTotals();
+
+    // Accessibility: ESC to hide overlay if visible
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && overlay.classList.contains('show')) {
+        overlay.classList.remove('show');
+      }
+    });
+
+    // Smooth entries for cover content reveal on load
+    document.addEventListener('DOMContentLoaded', () => {
+      const coverContent = document.querySelector('.cover-content');
+      if (coverContent) {
+        setTimeout(()=>{ coverContent.classList.add('loaded'); }, 120);
+      }
+
+      // mark animate-scroll elements to be observed
+      document.querySelectorAll('.animate-scroll').forEach(el => {
+        // already observed above
+      });
+    });
+
+    // Ensure images inside frames remain cropped nicely when loaded or resized
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.img-frame').forEach(img => {
+        // if image has different proportions, CSS object-fit ensures it fills properly
+        // nothing else needed, but keep hook to allow future image adjustments
+      });
+    });
+  </script>
 </body>
 </html>
